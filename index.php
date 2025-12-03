@@ -1,14 +1,14 @@
 <?php
-// index.php
+// index.php (ACCUEIL)
 require 'includes/db.php';
-// On inclut le header qui contient déjà la session_start et la Navbar moderne
 include 'includes/header.php';
 
-// Récupérer les événements
+// 1. Récupérer SEULEMENT LES 3 PROCHAINS événements (LIMIT 3)
 $sql = "SELECT e.*, c.nom as categorie_nom 
         FROM evenements e 
         LEFT JOIN categories c ON e.categorie_id = c.id 
-        ORDER BY e.date_evenement ASC";
+        ORDER BY e.date_evenement ASC 
+        LIMIT 3"; 
 $stmt = $pdo->query($sql);
 $events = $stmt->fetchAll();
 ?>
@@ -20,7 +20,7 @@ $events = $stmt->fetchAll();
     .hero {
         position: relative; overflow: hidden; min-height: 600px;
         color: #fff; 
-        padding-top: 120px; /* Pour compenser la navbar fixe */
+        padding-top: 120px; 
         background:
             radial-gradient(900px 500px at 15% 30%, rgba(219,39,119,.55), transparent 60%),
             radial-gradient(900px 550px at 70% 20%, rgba(109,40,217,.65), transparent 65%),
@@ -74,19 +74,11 @@ $events = $stmt->fetchAll();
 <main class="py-5" id="agenda">
     <div class="container">
         <div class="card card-custom p-4 mb-5" style="margin-top: -80px; position: relative; z-index: 10;">
-            <form class="row g-3">
-                 <div class="col-md-5">
+            <form class="row g-3" action="events.php"> <div class="col-md-9">
                      <input type="text" class="form-control border-0 bg-light py-3 rounded-3" placeholder="🔍 Rechercher un événement...">
                  </div>
-                 <div class="col-md-4">
-                     <select class="form-select border-0 bg-light py-3 rounded-3 text-muted">
-                         <option>Toutes les catégories</option>
-                         <option>Conférence</option>
-                         <option>Atelier</option>
-                     </select>
-                 </div>
                  <div class="col-md-3">
-                     <button class="btn btn-gradient w-100 py-3 rounded-3">Filtrer</button>
+                     <button type="submit" class="btn btn-gradient w-100 py-3 rounded-3">Trouver</button>
                  </div>
             </form>
         </div>
@@ -135,11 +127,19 @@ $events = $stmt->fetchAll();
             <?php else: ?>
                 <div class="col-12 text-center py-5">
                     <div class="alert alert-light d-inline-block px-5 shadow-sm">
-                        <h4>Aucun événement trouvé 😴</h4>
+                        <h4>Aucun événement à venir 😴</h4>
+                        <p>L'agenda est vide pour le moment.</p>
                     </div>
                 </div>
             <?php endif; ?>
         </div>
+
+        <div class="text-center mt-5">
+            <a href="events.php" class="btn btn-light text-primary fw-bold px-5 py-3 rounded-pill shadow-sm border">
+                Voir tout l'agenda <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+        </div>
+
     </div>
 </main>
 

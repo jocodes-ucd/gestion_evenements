@@ -103,6 +103,9 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="collapse navbar-collapse" id="navMain">
       <ul class="navbar-nav ms-auto align-items-center gap-2">
         <li class="nav-item"><a class="nav-link" href="/gestion_evenements/index.php">ACCUEIL</a></li>
+        <li class="nav-item">
+        <a class="nav-link" href="/gestion_evenements/events.php">AGENDA</a>
+    </li>
         
         <?php if(isset($_SESSION['user_id'])): ?>
             <?php if($_SESSION['role'] === 'admin'): ?>
