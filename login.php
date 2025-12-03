@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start(); // On s'assure que la session est active pour stocker les données
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['nom'] = $user['nom'];
+            $_SESSION['email'] = $user['email'];
             $_SESSION['role'] = $user['role'];
 
             // Redirection selon le rôle
