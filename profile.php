@@ -110,10 +110,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label class="form-label fw-bold small text-muted">ADRESSE EMAIL</label>
                         <input type="email" name="email" class="form-control bg-light border-0 py-3" value="<?= htmlspecialchars($user['email']) ?>" required>
                     </div>
-
+                    
                     <div class="d-flex justify-content-end gap-3">
                         <a href="index.php" class="btn btn-light fw-bold px-4 py-3 rounded-pill">Annuler</a>
                         <button type="submit" class="btn btn-gradient px-5 py-3 rounded-pill shadow-sm">Enregistrer les modifications</button>
+                    </div>
+                </form>
+                <hr class="my-5 opacity-10">
+
+                <h4 class="fw-bold mb-4 text-danger"><i class="bi bi-shield-lock me-2"></i>Sécurité</h4>
+
+                <form method="POST" action="change_password.php"> <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label small fw-bold text-muted">ANCIEN MOT DE PASSE</label>
+                            <input type="password" name="old_pass" class="form-control bg-light border-0 py-2" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label small fw-bold text-muted">NOUVEAU</label>
+                            <input type="password" name="new_pass" class="form-control bg-light border-0 py-2" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label small fw-bold text-muted">CONFIRMER</label>
+                            <input type="password" name="confirm_pass" class="form-control bg-light border-0 py-2" required>
+                        </div>
+                    </div>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-outline-danger fw-bold rounded-pill px-4">
+                            Mettre à jour le mot de passe
+                        </button>
                     </div>
                 </form>
 

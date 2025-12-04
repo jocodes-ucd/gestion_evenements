@@ -70,6 +70,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         <?php endif; ?>
 
+
+
+
+
+
+        <?php if(isset($_GET['msg']) && $_GET['msg'] == 'password_reset'): ?>
+            <div class="alert alert-success border-0 bg-success bg-opacity-10 text-success rounded-3 text-center mb-4">
+                <i class="bi bi-check-circle-fill me-2"></i> Mot de passe modifié !<br>Connectez-vous.
+            </div>
+        <?php endif; ?>
+
+
+
+
+
+
+
+        
         <?php if($error): ?>
             <div class="alert alert-danger border-0 bg-danger bg-opacity-10 text-danger rounded-3 text-center">
                 <i class="bi bi-exclamation-circle me-2"></i> <?= $error ?>
@@ -84,6 +102,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="form-floating mb-4">
                 <input type="password" name="password" class="form-control rounded-3 border-light bg-light" id="floatPass" placeholder="Password" required>
                 <label for="floatPass">Mot de passe</label>
+            </div>
+            <div class="text-end mb-3 mt-n2">
+                <a href="forgot_password.php" class="small text-muted text-decoration-none">Mot de passe oublié ?</a>
             </div>
             
             <button type="submit" class="btn btn-gradient w-100 py-3 rounded-3 fs-5">Se connecter</button>
